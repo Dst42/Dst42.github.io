@@ -101,12 +101,12 @@
 <p>接下来继续刚才查看当前SElinux 允许的ssh端口的操作</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -l | grep ssh</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/Falling42/MyPictures@master/BlogImg/LinuxSSH.2021.12.31/%E7%BB%A7%E7%BB%AD%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8DSElinux%20%E5%85%81%E8%AE%B8%E7%9A%84ssh%E7%AB%AF%E5%8F%A3.png" alt="继续查看当前SElinux 允许的ssh端口"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Falling42/MyPictures@master/BlogImg/LinuxSSH.2021.12.31/%E7%BB%A7%E7%BB%AD%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8DSElinux%E5%85%81%E8%AE%B8%E7%9A%84ssh%E7%AB%AF%E5%8F%A3.png" alt="继续查看当前SElinux 允许的ssh端口"></p>
 <p>说明除了<code>22</code>端口没有其他端口，我们要把<code>25535</code>端口加进去</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -a -t ssh_port_t -p tcp 25535</span><br></pre></td></tr></table></figure>
 
 <p>然后再用<code>semanage port -l | grep ssh</code>命令查询</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Falling42/MyPictures@master/BlogImg/LinuxSSH.2021.12.31/%E5%86%8D%E7%94%A8semanage%20%E5%91%BD%E4%BB%A4%E6%9F%A5%E8%AF%A2.png" alt="再用semanage 命令查询"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Falling42/MyPictures@master/BlogImg/LinuxSSH.2021.12.31/%E5%86%8D%E7%94%A8semanage%E5%91%BD%E4%BB%A4%E6%9F%A5%E8%AF%A2.png" alt="再用semanage 命令查询"></p>
 <p>这样就把我们想要的<code>25535</code>这个端口加进去了</p>
 <p>接下来重启ssh服务器</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart sshd.service</span><br></pre></td></tr></table></figure>
